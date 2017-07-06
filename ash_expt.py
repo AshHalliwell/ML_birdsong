@@ -33,7 +33,7 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
     wav_file.close()
     offset += duration
-    fragment =wavy.get_audio(wav_file)
+    #fragment =wavy.get_audio(wav_file)
 
     #spectrogram of sliced file
     plt.figure(1)
