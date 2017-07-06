@@ -27,7 +27,7 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 
 duration = 0.5 #Half a second
 offset = 0;
-#attempting to slice
+#attempting to slice s
 while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     wav_file = open("stitchout.wav", 'w')
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
