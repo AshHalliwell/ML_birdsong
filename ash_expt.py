@@ -31,12 +31,14 @@ offset = 0;
 while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     wav_file = open("stitchout.wav", 'w')
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
-    wav_file.close()
-    offset += duration
+
+
 
     #spectrogram of sliced file
     plt.figure(1)
     nfft=1024
     fs=256
-    Pxx, freqs, bins, im = plt.specgram(audio[0], nfft, fs)
+    Pxx, freqs, bins, im = plt.specgram(wav_file, nfft, fs)
     plt.savefig('stitch_specgram' + str(offset) + '.jpg', dpi=100)
+    wav_file.close()
+    offset += duration
