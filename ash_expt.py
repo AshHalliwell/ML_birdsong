@@ -25,15 +25,18 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 #for i in audio:
 #	print(i)
 
-
+duration = 0.5 #Half a second
+offset = 0;
 #attempting to slice
-wav_file = open("stitchout.wav", 'w')
-wavy.slice_wave(source, wav_file, 0, 0.5) #input file, output file, start in seconds, duraction in seconds
-wav_file.close()
+while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
+    wav_file = open("stitchout.wav", 'w')
+    wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
+    wav_file.close()
+    offset += duration
 
-#spectrogram of sliced file
-plt.figure(1)
-nfft=1024
-fs=256
-Pxx, freqs, bins, im = plt.specgram(audio[0], nfft, fs)
-plt.savefig('stitch_specgram.jpg', dpi=100)
+    #spectrogram of sliced file
+    plt.figure(1)
+    nfft=1024
+    fs=256
+    Pxx, freqs, bins, im = plt.specgram(audio[0], nfft, fs)
+    plt.savefig('stitch_specgram' + str(offset) + '.jpg', dpi=100)
