@@ -44,4 +44,3 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     #Pxx, freqs, bins, im = plt.specgram(audio[0], nfft, fs)
     #plt.savefig('imgs/stitch_specgram' + suffix + '.jpg', dpi=100)
     offset += duration
-    fragment.close()
