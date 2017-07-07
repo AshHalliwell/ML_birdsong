@@ -34,7 +34,7 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     wav_file.close()
 
     fragment = wave.open("stitchout"+ str(offset) + ".wav", 'r')
-    print('Fragment: ' + fragment)
+    print fragment
 
     #spectrogram of sliced file
     plt.figure(1)
