@@ -41,6 +41,6 @@ while(offset + duration < end_length):
     plt.figure(1)
     nfft=1024
     fs=256
-    Pxx, freqs, bins, im = plt.specgram(fragment, nfft, fs)
+    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs)
     plt.savefig('imgs/stitch_specgram' + suffix + '.jpg', dpi=100)
     offset += duration
