@@ -29,7 +29,7 @@ duration = 0.5 #Half a second
 offset = 0;
 end_length = 122.5 #wavy.slice_wave stops working after this point (Am I calculating file length right?)
 #attempting to slice
-while(end_length < float(len(audio[0])/(no_channels*frequency))):
+while(offset + duration < end_length):
     suffix = str(offset) + "-" + str(offset + duration)
     wav_file = open("audio/stitchout"+ suffix + ".wav", 'w')
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
