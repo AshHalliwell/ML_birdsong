@@ -27,7 +27,7 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 
 duration = 0.5 #Half a second
 offset = 0;
-end_length = 122.5 #wavy.slice_wave stops working after this point ¯\_(ツ)_/¯ (Am I calculating file length right?)
+end_length = 122.5 #wavy.slice_wave stops working after this point (Am I calculating file length right?)
 #attempting to slice
 while(end_length < float(len(audio[0])/(no_channels*frequency))):
     suffix = str(offset) + "-" + str(offset + duration)
