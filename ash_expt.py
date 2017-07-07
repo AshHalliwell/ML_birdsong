@@ -30,11 +30,11 @@ offset = 0;
 #attempting to slice
 while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     suffix = str(offset) + "-" + str(offset + duration)
-    wav_file = open("stitchout"+ suffix + ".wav", 'w')
+    wav_file = open("audio/stitchout"+ suffix + ".wav", 'w')
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
     wav_file.close()
 
-    fragment = wave.open("stitchout"+ suffix + ".wav", 'r')
+    fragment = wave.open("audio/stitchout"+ suffix + ".wav", 'r')
     print fragment
 
     #spectrogram of sliced file
@@ -42,6 +42,6 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     nfft=1024
     fs=256
     #Pxx, freqs, bins, im = plt.specgram(audio[0], nfft, fs)
-    #plt.savefig('stitch_specgram' + suffix + '.jpg', dpi=100)
+    #plt.savefig('imgs/stitch_specgram' + suffix + '.jpg', dpi=100)
     offset += duration
     fragment.close()
