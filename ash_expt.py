@@ -25,7 +25,7 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 #for i in audio:
 #	print(i)
 
-duration = 0.5 #Half a second
+duration = 1 #Half a second
 offset = 0;
 #attempting to slice
 while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
