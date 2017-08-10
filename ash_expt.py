@@ -25,8 +25,8 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 #for i in audio:
 #	print(i)
 
-if not os.path.exists(source):
-    os.makedirs(source)
+if not os.path.exists(source+"_results"):
+    os.makedirs(source+"_results")
 if not os.path.exists(source+"/audio"):
     os.makedirs(source+"/audio")
 if not os.path.exists(source+"/imgs"):
