@@ -45,10 +45,10 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     fragment = wavy.get_audio(source + "_results/audio/audio_"+ suffix + ".wav")
 #Vmin/max
     #spectrogram of sliced file
-    plt.figure(1, cmap='binary')
+    plt.figure(1)
     nfft=1024
     fs=256#Sampling frequency
-    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs)
+    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='gray')
     #for i in range(len(Pxx[0][:]))
     #    someArray[i] = sum(Pxx[0][i])
     plt.colorbar()
