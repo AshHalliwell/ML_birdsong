@@ -53,6 +53,6 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     #    someArray[i] = sum(Pxx[0][i])
     plt.colorbar()
     plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
-    plt.plot(i, someArray[i])
-    plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
+    #plt.plot(i, someArray[i])
+    #plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
     offset += duration
