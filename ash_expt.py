@@ -51,7 +51,11 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary')
     #for i in range(len(Pxx[0][:]))
     #    someArray[i] = sum(Pxx[0][i])
-    #plt.colorbar(im)
+    ax1 = fig.add_axes([0.1, 0.75, 0.7, 0.2]) #[left bottom width height]
+    ax2 = fig.add_axes([0.1, 0.1, 0.7, 0.60], sharex=ax1)
+    ax3 = fig.add_axes([0.83, 0.1, 0.03, 0.6])
+    mappable = ax2.images[0]
+    plt.colorbar(mappable=mappable, cax=ax3)
     plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
     #plt.plot(i, someArray[i])
     #plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
