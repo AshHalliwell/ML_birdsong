@@ -48,7 +48,7 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     plt.figure(1)
     nfft=1024
     fs=256#Sampling frequency
-    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='gray')
+    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary')
     #for i in range(len(Pxx[0][:]))
     #    someArray[i] = sum(Pxx[0][i])
     #plt.colorbar(im)
