@@ -27,10 +27,10 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 
 if not os.path.exists(source+"_results"):
     os.makedirs(source+"_results")
-if not os.path.exists(source+"_results/audio"):
-    os.makedirs(source+"_results/audio")
-if not os.path.exists(source+"_results/imgs"):
-    os.makedirs(source+"_results/imgs")
+if not os.path.exists(source+"/audio"):
+    os.makedirs(source+"/audio")
+if not os.path.exists(source+"/imgs"):
+    os.makedirs(source+"/imgs")
 
 duration = 1 #Half a second
 offset = 0;
@@ -38,12 +38,12 @@ offset = 0;
 while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
 
     suffix = str(offset) + "-" + str(offset + duration)
-    wav_file = open(source + "_results/audio/audio_"+ suffix + ".wav", 'w')
+    wav_file = open(source + "/audio/audio_"+ suffix + ".wav", 'w')
     wavy.slice_wave(source, wav_file, offset, duration) #input file, output file, start in seconds, duration in seconds
     wav_file.close()
     #print("Segment: " + suffix)
     fragment = wavy.get_audio(source + "_results/audio/audio_"+ suffix + ".wav")
-#Vmin/max
+    fragment = wavy.get_audio(source + "/audio/audio_"+ suffix + ".wav")
     #spectrogram of sliced file
     fig = plt.figure(1)
     nfft=1024
@@ -51,10 +51,9 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary')
     #for i in range(len(Pxx[0][:]))
     #    someArray[i] = sum(Pxx[0][i])
-    ax = fig.axes[0]
-    mappable = ax.collections[0]
-    fig.colorbar(mappable=mappable, ax=ax)
     plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
     #plt.plot(i, someArray[i])
     #plt.savefig(source + '_results/imgs/' + source + '_specgram_' + suffix + '.jpg', dpi=100)
+    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs)
+    plt.savefig(source + 'imgs/specgram_' + suffix + '.jpg', dpi=100)
     offset += duration
