@@ -48,6 +48,6 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     plt.figure(1)
     nfft=1024
     fs=256#Sampling frequency
-    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary')
+    Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary', vmin = 0, vmax = 100)
     plt.savefig(source + '_results/imgs/specgram_' + suffix + '.jpg', dpi=100)
     offset += duration
