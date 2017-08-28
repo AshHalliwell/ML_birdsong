@@ -35,7 +35,7 @@ if not os.path.exists(source+"_results/imgs"):
 duration = 1 #Half a second
 offset = 0;
 #attempting to slice
-while(offset + duration < 3):#float(len(audio[0])/(no_channels*frequency))):
+while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
 
     suffix = str(offset) + "-" + str(offset + duration)
     wav_file = open(source + "_results/audio/audio_"+ suffix + ".wav", 'w')
