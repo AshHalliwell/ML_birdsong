@@ -27,10 +27,14 @@ print('Length of file is: '+str(float(len(audio[0])/(no_channels*frequency)))+' 
 
 if not os.path.exists(source+"_results"):
     os.makedirs(source+"_results")
-if not os.path.exists(source+"_results/audio"):
-    os.makedirs(source+"_results/audio")
-if not os.path.exists(source+"_results/imgs"):
-    os.makedirs(source+"_results/imgs")
+if not os.path.exists(source+"_results/audio/bird"):
+    os.makedirs(source+"_results/audio/bird")
+if not os.path.exists(source+"_results/audio/not_bird"):
+    os.makedirs(source+"_results/audio/not_bird")
+if not os.path.exists(source+"_results/imgs/bird"):
+    os.makedirs(source+"_results/imgs/bird")
+if not os.path.exists(source+"_results/imgs/not_bird"):
+    os.makedirs(source+"_results/imgs/not_bird")
 
 duration = 1 #Half a second
 offset = 0;
@@ -50,4 +54,20 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     fs=256#Sampling frequency
     Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary', vmin = 0, vmax = 200)
     plt.savefig(source + '_results/imgs/specgram_' + suffix + '.jpg', dpi=100)
+    rows = []
+    cols = []
+    for i in range(len(Pxx[0])):
+        cols.append(sum(Pxx[i]))
+    for i in range(len(Pxx[:][0])):
+        rows.append(sum(zip(*Pxx)[i]))
+    tot = sum(rows)
+    print(tot)
+    plt.clf()
+    plt.cla()
+    plt.plot(cols)
+    plt.savefig(source + '_results/imgs/cols_' + suffix + '.jpg', dpi=100)
+    plt.clf()
+    plt.cla()
+    plt.plot(rows)
+    plt.savefig(source + '_results/imgs/rows_' + suffix + '.jpg', dpi=100)
     offset += duration
