@@ -61,7 +61,6 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     for i in range(len(Pxx[:][0])):
         rows.append(sum(zip(*Pxx)[i]))
     tot = sum(rows)
-    print(tot)
     plt.clf()
     plt.cla()
     plt.plot(cols)
