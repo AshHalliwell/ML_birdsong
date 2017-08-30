@@ -55,7 +55,8 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     plt.clf()
     plt.cla()
     Pxx, freqs, bins, im = plt.specgram(fragment[0], nfft, fs, cmap='binary', vmin = 0, vmax = 200)
-    plt.savefig(source + '_results/imgs/' + suffix + '_specgram.jpg', dpi=100)
+    plt.axis('off')
+    plt.savefig(source + '_results/imgs/' + suffix + '_specgram.jpg', dpi=100, bbox_inches='tight')
     rows = []
     cols = []
     for i in range(len(Pxx[0])):
@@ -66,9 +67,11 @@ while(offset + duration < float(len(audio[0])/(no_channels*frequency))):
     plt.clf()
     plt.cla()
     plt.plot(cols)
-    plt.savefig(source + '_results/imgs/'+ suffix +'_cols.jpg', dpi=100)
+    plt.axis('off')
+    plt.savefig(source + '_results/imgs/'+ suffix +'_cols.jpg', dpi=100, bbox_inches='tight')
     plt.clf()
     plt.cla()
     plt.plot(rows)
-    plt.savefig(source + '_results/imgs/'+ suffix +  '_rows.jpg', dpi=100)
+    plt.axis('off')
+    plt.savefig(source + '_results/imgs/'+ suffix +  '_rows.jpg', dpi=100, bbox_inches='tight')
     offset += duration
